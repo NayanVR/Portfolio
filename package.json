@@ -1,0 +1,17 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "NayanVR Portfolio",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js -e js,css,html,svg,jpeg,jpg,png",
+    "compile:sass": "node-sass sass/main.scss public/css/style.css -w"
+  },
+  "author": "NayanVR",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "node-sass": "^7.0.1",
+    "path": "^0.12.7"
+  }
+}
