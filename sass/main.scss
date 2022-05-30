@@ -1,7 +1,11 @@
-body {
-    font-size: 62.5%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk');
+@import url('https://fonts.googleapis.com/css2?family=Karantina');
 
-h1 {
-    color: orange;
-}
+@import "./abstracts/variables";
+
+@import "./base/_base";
+@import "./base/typography";
+@import "./base/animations";
+
+@import "./layout/_navbar";
