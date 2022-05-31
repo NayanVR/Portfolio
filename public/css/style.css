@@ -14,7 +14,8 @@ html {
 
 body {
   box-sizing: border-box;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  overflow-x: hidden; }
 
 a {
   text-decoration: none; }
@@ -22,7 +23,7 @@ a {
 nav {
   width: 100vw;
   background-color: #00011C;
-  border-bottom: 2px solid #3E00FF;
+  border-bottom: 1px solid #3E00FF;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -110,3 +111,33 @@ nav {
       left: 0;
       width: 3rem;
       transform: rotate(-135deg); } }
+
+#hero {
+  width: 100vw;
+  height: calc(100vh - 8rem);
+  background-color: #00011C;
+  display: flex;
+  justify-content: center;
+  padding: 0 10%; }
+
+.hero {
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .hero__content {
+    width: fit-content;
+    display: flex;
+    flex-direction: column; }
+    .hero__content h2 {
+      color: #fff; }
+    .hero__content img {
+      width: 50vw;
+      height: auto; }
+  .hero__skills {
+    color: #FAE400; }
+
+@media screen and (max-width: 600px) {
+  .hero__content img {
+    width: 80vmin; } }

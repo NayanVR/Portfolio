@@ -1,0 +1,46 @@
+#hero {
+    width: 100vw;
+    height: calc(100vh - 8rem);
+    background-color: $color-primary-dark;
+    display: flex;
+    justify-content: center;
+    padding: 0 $space-around-lg;
+}
+
+.hero {
+    
+    width: 100%;
+    max-width: $max-website-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__content {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        & h2 {
+            color: $color-white;
+        }
+
+        & img {
+            width: 50vw;
+            height: auto;
+        }
+    }
+
+    &__skills {
+        color: $color-secondary;
+    }
+}
+
+@media screen and (max-width: $mobile-size) {
+    .hero {
+        &__content {
+            & img {
+                width: 80vmin;
+            }
+        }
+    }
+}
