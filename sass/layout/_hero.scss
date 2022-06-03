@@ -3,43 +3,103 @@
     height: calc(100vh - 8rem);
     background-color: $color-primary-dark;
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 0 $space-around-lg;
 }
 
 .hero {
-    
     width: 100%;
+    height: 100%;
     max-width: $max-website-width;
+    padding: 0 $space-around-lg;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0px;
     align-items: center;
-    
+
     &__content {
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
+        height: 50vh;
 
         & h2 {
-            color: $color-white;
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Rubik', sans-serif;
+            color: $color-primary-light;
         }
 
         & img {
-            width: 50vw;
-            height: auto;
+            height: 90%;
+            width: 100%;
         }
     }
 
     &__skills {
+        width: 60vw;
+        height: 3rem;
+        position: relative;
+        background-color: transparent;
         color: $color-secondary;
+        filter: contrast(50) blur(1px);
+
+        &__word {
+            position: absolute;
+            top: 50%; left: 50%;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            transform: translate(-50%, -50%);
+            animation: word $speed infinite ease-in-out;
+          
+            @for $i from 0 to $wordCount {
+              &:nth-child(#{$i + 1}) {
+                animation-delay: ($speed / ($wordCount + 1) * $i) - $speed;
+              }
+            }
+          
+            @keyframes word {
+              0%, 5%, 100% { filter: blur(0px); opacity: 1; }        
+              20%, 80% { filter: blur(1.6rem); opacity: 0; }        
+            }
+          }
+    }
+
+    &__down-arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        & img {
+            height: 1.5rem;
+            @for $i from 0 to 3 {
+                &:nth-child(#{$i + 1}) {
+                    animation: arrow 3s infinite #{($i*0.3)+'s'} ease-in-out;
+                }
+            }
+        }
     }
 }
 
-@media screen and (max-width: $mobile-size) {
+@media only screen and (max-width: $mobile-size) {
     .hero {
+        justify-content: center;
+        gap: 3rem;
+
         &__content {
+            height: max-content;
+
             & img {
-                width: 80vmin;
+                height: max-content;
+            }
+        }
+
+        &__skills {
+            width: 100%;
+            height: 3rem;
+    
+            &__word {
+                font-size: 2rem;
             }
         }
     }
