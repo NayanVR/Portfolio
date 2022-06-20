@@ -1,0 +1,58 @@
+.liquid-blobs {
+    height: 7rem;
+    width: 100vw;
+    background-color: white;
+    overflow: hidden;
+    filter: contrast(20);
+}
+  
+.liquid-blobs::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #70707b;
+    mix-blend-mode: lighten;
+}
+  
+.blob {
+    animation-duration: 2s;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    filter: blur(10px);
+    animation-name: blob-anim;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transition: all 0.5s;
+  
+    background: black;
+    /*   box-shadow: 0 0 30px 10px black; */
+}
+  
+@keyframes blob-anim {
+    0% {
+        transform: translateX(-50vw);
+    }
+    100% {
+        transform: translateX(50vw);
+    }
+}
+  
+.liquid-base {
+    width: 100%;
+    height: 2rem;
+    background-color: black;
+}
+  
+.liquid-connector {
+    width: 120%;
+    height: 1rem;
+    background-color: black;
+    filter: blur(10px);
+    transform: translate(-10%, -0.5rem);
+}
+  

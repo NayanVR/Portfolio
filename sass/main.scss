@@ -2,11 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk');
 @import url('https://fonts.googleapis.com/css2?family=Karantina');
 
+@import "./abstracts/mixins";
 @import "./abstracts/variables";
 
-@import "./base/_base";
-@import "./base/typography";
 @import "./base/animations";
+@import "./base/base";
+@import "./base/typography";
 
-@import "./layout/navbar";
+@import "./components/liquid";
+
+@import "./layout/about";
 @import "./layout/hero";
+@import "./layout/navbar";
