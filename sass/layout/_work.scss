@@ -1,0 +1,41 @@
+#work {
+  width: 100vw;
+  height: max-content;
+  background-color: $color-primary-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.work {
+  @include responsive-space-around;
+
+  &>img {
+    width: 35vw;
+  }
+}
+
+
+.carousel-container {
+
+  &:not(:first-child) {
+    margin-top: 5rem;
+  }
+
+  &>h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Space Grotesk", sans-serif;
+    color: $color-secondary;
+    position: absolute;
+    margin-top: 2rem;
+    z-index: 100;
+  }
+}
+
+@media only screen and (max-width: $mobile-size) {
+  .work>img {
+    width: 100%;
+  }
+}

@@ -1,7 +1,8 @@
 #hero {
     width: 100vw;
     height: calc(100vh - 8rem);
-    background-color: $color-primary-dark;
+    // background-color: $color-primary-dark;
+    background: linear-gradient($color-primary-dark, #000026);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +22,7 @@
         & h2 {
             font-size: 2rem;
             font-weight: bold;
-            font-family: 'Rubik', sans-serif;
+            font-family: "Rubik", sans-serif;
             color: $color-primary-light;
         }
 
@@ -41,24 +42,36 @@
 
         &__word {
             position: absolute;
-            top: 50%; left: 50%;
-            font-family: 'Space Grotesk', sans-serif;
+            top: 50%;
+            left: 50%;
+            font-family: "Space Grotesk", sans-serif;
             font-weight: 900;
             font-size: 3rem;
             transform: translate(-50%, -50%);
             animation: word $speed infinite ease-in-out;
-          
+
             @for $i from 0 to $wordCount {
-              &:nth-child(#{$i + 1}) {
-                animation-delay: ($speed / ($wordCount + 1) * $i) - $speed;
-              }
+                &:nth-child(#{$i + 1}) {
+                    animation-delay: ($speed / ($wordCount + 1) * $i) - $speed;
+                }
             }
-          
+
             @keyframes word {
-              0%, 5%, 100% { filter: blur(0px); opacity: 1; }        
-              20%, 80% { filter: blur(1.6rem); opacity: 0; }        
+
+                0%,
+                5%,
+                100% {
+                    filter: blur(0px);
+                    opacity: 1;
+                }
+
+                20%,
+                80% {
+                    filter: blur(1.6rem);
+                    opacity: 0;
+                }
             }
-          }
+        }
     }
 
     &__down-arrow {
@@ -69,9 +82,10 @@
 
         & img {
             height: 1.5rem;
+
             @for $i from 0 to 3 {
                 &:nth-child(#{$i + 1}) {
-                    animation: arrow 3s infinite #{($i*0.3)+'s'} ease-in-out;
+                    animation: arrow 3s infinite #{($i * 0.3) + "s"} ease-in-out;
                 }
             }
         }
@@ -94,7 +108,7 @@
         &__skills {
             width: 100%;
             height: 3rem;
-    
+
             &__word {
                 font-size: 2rem;
             }

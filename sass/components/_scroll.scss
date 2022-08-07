@@ -1,0 +1,57 @@
+.hscroll-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.hscroll-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.hscroll-block {
+  min-width: 16rem;
+  max-width: 16rem;
+  overflow: hidden;
+  height: 9rem;
+  margin: 0 2rem;
+  transition: transform 0.5s;
+  // TODO: remove this
+  background-color: white;
+}
+
+.hscroll-block:first-child {
+  margin-left: 8rem;
+}
+
+.hscroll-block img {
+  width: 100%;
+  transition: all 0.5s;
+}
+
+.hscroll-block h2 {
+  position: absolute;
+  color: white;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 10;
+  transition: opacity 0.5s;
+}
+
+.hscroll-block:hover h2 {
+  opacity: 1;
+}
+
+.hscroll-block:hover img {
+  filter: saturate(0.5) brightness(0.3);
+}
+
+.hscroll-block:nth-child(even) {
+  // TODO: remove this
+  background-color: thistle;
+}
