@@ -1,4 +1,5 @@
-import json from './workData.js';
+import workData from './workData.js';
+import skillsData from './skillsData.js';
 import HScroll from './scroll.js';
 
 let nav = document.querySelector('.nav')
@@ -38,7 +39,7 @@ let containers = document.getElementsByClassName('hscroll-container');
 for (let i = 0; i < containers.length; i++) {
     const container = containers[i];
     
-    new HScroll(container, json.UI);
+    new HScroll(container, workData.UI);
     
     container.addEventListener("mouseover", (e) => {
         disableScroll();
@@ -47,6 +48,25 @@ for (let i = 0; i < containers.length; i++) {
         enableScroll();
     });
 }
+
+// SKILLS DATA
+
+let skillsContainer = document.querySelector('.skills__logos-container');
+let image = document.createElement('img');
+image.src = 'assets/Figma logo.svg';
+
+skillsData.Skills.forEach(skill => {
+    let image = document.createElement('img');
+    image.src = skill.src;
+    image.alt = skill.name;
+    skillsContainer.appendChild(image);
+})
+
+
+
+
+
+// DISABLE SCROLL
 
 let supportsPassive = false;
 try {
@@ -80,8 +100,8 @@ function preventDefaultForScrollKeys(e) {
     let keys = {37: 1, 38: 1, 39: 1, 40: 1};
     if (keys[e.keyCode]) {
         preventDefault(e);
-    return false;
-  }
+        return false;
+    }
 }
 
 
