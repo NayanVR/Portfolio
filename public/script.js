@@ -5,6 +5,7 @@ import HScroll from './scroll.js';
 let nav = document.querySelector('.nav')
 let navToggle = document.querySelector('.nav__toggle')
 let liquidContainer = document.querySelector('.liquid-blobs');
+let navLinks = document.querySelectorAll(".nav__links a");
 let windowWidth = window.innerWidth;
 
 //Navbar toggle 
@@ -12,6 +13,17 @@ navToggle.addEventListener('click', () => {
     let isOpen = nav.getAttribute('data-is-open')
     nav.setAttribute('data-is-open', isOpen === 'true' ? 'false' : 'true')
 })
+
+// SCROLL SMOOTH FOR NAV LINKS
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+});
 
 //Liquid Logic
 let noOfBlobs = parseInt(windowWidth / 5);
