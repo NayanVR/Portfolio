@@ -16,7 +16,8 @@
 
 html {
   font-size: 62.5%;
-  /* now 1 rem = 10px  */ }
+  /* now 1 rem = 10px  */
+  scroll-behavior: smooth; }
 
 body {
   box-sizing: border-box;
@@ -25,6 +26,33 @@ body {
 
 a {
   text-decoration: none; }
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-color: #FAE400;
+  pointer-events: none; }
+  .cursor__ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    border: 1px solid #FAE400;
+    pointer-events: none; }
+
+@media screen and (max-width: 600px) {
+  .cursor {
+    display: none; } }
 
 .liquid-blobs {
   height: 7rem;
@@ -93,7 +121,7 @@ a {
   height: 9rem;
   margin: 0 2rem;
   transition: transform 0.5s;
-  background-color: white; }
+  border-radius: 0.5rem; }
 
 .hscroll-block:first-child {
   margin-left: 8rem; }
@@ -430,13 +458,29 @@ nav {
   gap: 5%; }
   .skills > img {
     width: 35vw; }
+  .skills__logo {
+    position: relative;
+    padding: 0.7rem; }
+    .skills__logo > p {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #FAE400;
+      border: 2px solid #00011C;
+      transform: translate(-50%, -90%) scale(0);
+      transition: transform 0.3s ease-in-out;
+      transform-origin: bottom; }
+    .skills__logo > img {
+      width: 100%; }
+      .skills__logo > img:hover + p {
+        transform: translate(-50%, -90%) scale(1); }
   .skills__logos-container {
     display: inline-grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(6, 1fr); }
-    .skills__logos-container > img {
-      width: 100%;
-      padding: 0.7rem; }
 
 @media only screen and (max-width: 600px) {
   .skills {
@@ -472,6 +516,7 @@ nav {
   font-weight: bold;
   font-family: "Space Grotesk", sans-serif;
   color: #FAE400;
+  text-shadow: 1px 1px 3px black;
   position: absolute;
   margin-top: 2rem;
   z-index: 100; }

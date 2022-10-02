@@ -21,17 +21,40 @@
         width: 35vw;
     }
 
+    &__logo {
+        position: relative;
+        padding: 0.7rem;
+
+        &>p {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: $color-secondary;
+            border: 2px solid $color-primary-dark;
+            transform: translate(-50%, -90%) scale(0);
+            transition: transform 0.3s ease-in-out;
+            transform-origin: bottom;
+        }
+
+        &>img {
+            width: 100%;
+
+            &:hover+p {
+                transform: translate(-50%, -90%) scale(1);
+            }
+        }
+    }
+
     &__logos-container {
         display: inline-grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: repeat(6, 1fr);
-
-        &>img {
-            width: 100%;
-            padding: 0.7rem;
-        }
     }
 }
+
 
 @media only screen and (max-width: $mobile-size) {
     .skills {

@@ -5,27 +5,28 @@ import HScroll from './scroll.js';
 let nav = document.querySelector('.nav')
 let navToggle = document.querySelector('.nav__toggle')
 let liquidContainer = document.querySelector('.liquid-blobs');
-let navLinks = document.querySelectorAll(".nav__links a");
 let windowWidth = window.innerWidth;
+// let cursor = document.querySelector('.cursor');
 
-//Navbar toggle 
-navToggle.addEventListener('click', () => {    
+//CURSOR LOGIC
+// let lastYPos = 0;
+// document.addEventListener('mousemove', e => {
+//     cursor.style.top = `${e.pageY}px`;
+//     cursor.style.left = `${e.pageX}px`;
+//     lastYPos = e.pageY;
+// })
+
+// window.addEventListener('scroll', e => {
+//     cursor.style.top = `${window.scrollY + lastYPos}px`;
+// })
+
+//NAVBAR TOGGLE
+navToggle.addEventListener('click', () => {
     let isOpen = nav.getAttribute('data-is-open')
     nav.setAttribute('data-is-open', isOpen === 'true' ? 'false' : 'true')
 })
 
-// SCROLL SMOOTH FOR NAV LINKS
-
-navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-});
-
-//Liquid Logic
+//LIQUID LOGIC
 let noOfBlobs = parseInt(windowWidth / 5);
 console.log(noOfBlobs);
 while (noOfBlobs-- > 0) {
@@ -35,7 +36,7 @@ while (noOfBlobs-- > 0) {
 function createBlob() {
     let blob = document.createElement('div');
     blob.classList.add('blob');
-    blob.style.animationDuration = `${getRandomNum(5,15)}s`;
+    blob.style.animationDuration = `${getRandomNum(5, 15)}s`;
     let blobSize = getRandomNum(2, 4);
     blob.style.height = `${blobSize}rem`;
     blob.style.width = `${blobSize}rem`;
@@ -46,13 +47,13 @@ function createBlob() {
 
 // HORIZONTAL SCROLL LOGIC
 
-let containers = document.getElementsByClassName('hscroll-container'); 
+let containers = document.getElementsByClassName('hscroll-container');
 
 for (let i = 0; i < containers.length; i++) {
     const container = containers[i];
-    
-    new HScroll(container, workData.UI);
-    
+
+    new HScroll(container, workData[Object.keys(workData)[i]]);
+
     container.addEventListener("mouseover", (e) => {
         disableScroll();
     });
@@ -69,9 +70,15 @@ image.src = 'assets/Figma logo.svg';
 
 skillsData.Skills.forEach(skill => {
     let image = document.createElement('img');
+    let div = document.createElement('div');
+    let p = document.createElement('p');
     image.src = skill.src;
     image.alt = skill.name;
-    skillsContainer.appendChild(image);
+    p.innerText = skill.name.replace(' Logo', '');
+    div.classList.add('skills__logo');
+    div.appendChild(image);
+    div.appendChild(p);
+    skillsContainer.appendChild(div);
 })
 
 
@@ -83,16 +90,16 @@ skillsData.Skills.forEach(skill => {
 let supportsPassive = false;
 try {
     window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-        get: function () { supportsPassive = true; } 
+        get: function () { supportsPassive = true; }
     }));
-} catch(e) {}
+} catch (e) { }
 
 let wheelOpt = supportsPassive ? { passive: false } : false;
 let wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
 function enableScroll() {
     window.removeEventListener('DOMMouseScroll', preventDefault, false);
-    window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
     window.removeEventListener('touchmove', preventDefault, wheelOpt);
     window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
@@ -109,7 +116,7 @@ function preventDefault(e) {
 }
 
 function preventDefaultForScrollKeys(e) {
-    let keys = {37: 1, 38: 1, 39: 1, 40: 1};
+    let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
     if (keys[e.keyCode]) {
         preventDefault(e);
         return false;
