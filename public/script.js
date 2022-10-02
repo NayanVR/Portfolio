@@ -6,27 +6,40 @@ let nav = document.querySelector('.nav')
 let navToggle = document.querySelector('.nav__toggle')
 let liquidContainer = document.querySelector('.liquid-blobs');
 let windowWidth = window.innerWidth;
-// let cursor = document.querySelector('.cursor');
+let cursorPoint = document.querySelector('.cursor__point');
+let cursorRing = document.querySelector('.cursor__ring');
 
-//CURSOR LOGIC
-// let lastYPos = 0;
-// document.addEventListener('mousemove', e => {
-//     cursor.style.top = `${e.pageY}px`;
-//     cursor.style.left = `${e.pageX}px`;
-//     lastYPos = e.pageY;
-// })
+// CURSOR LOGIC
+let xPos = 0;
+let yPos = 0;
+let yOffset = 0;
+document.addEventListener('mousemove', e => {
+    xPos = e.pageX;
+    yPos = e.pageY;
+    // cursorPoint.style.setProperty('transform', `translate(${xPos}px, ${yPos}px)`);
+    // cursorRing.style.setProperty('transform', `translate(${xPos}px, ${yPos}px)`);
+    cursorPoint.style.top = `${yPos}px`;
+    cursorPoint.style.left = `${xPos}px`;
+    cursorRing.style.top = `${yPos}px`;
+    cursorRing.style.left = `${xPos}px`;
+    yOffset = yPos - window.scrollY;
+})
 
-// window.addEventListener('scroll', e => {
-//     cursor.style.top = `${window.scrollY + lastYPos}px`;
-// })
+window.addEventListener('scroll', () => {
+    let scroll = window.scrollY;
+    // cursorPoint.style.setProperty('transform', `translate(${xPos}px, ${scroll + yOffset}px)`);
+    // cursorRing.style.setProperty('transform', `translate(${xPos}px, ${scroll + yOffset}px)`);
+    cursorPoint.style.top = `${scroll + yOffset}px`;
+    cursorRing.style.top = `${scroll + yOffset}px`;
+})
 
-//NAVBAR TOGGLE
+// NAVBAR TOGGLE
 navToggle.addEventListener('click', () => {
     let isOpen = nav.getAttribute('data-is-open')
     nav.setAttribute('data-is-open', isOpen === 'true' ? 'false' : 'true')
 })
 
-//LIQUID LOGIC
+// LIQUID LOGIC
 let noOfBlobs = parseInt(windowWidth / 5);
 console.log(noOfBlobs);
 while (noOfBlobs-- > 0) {
