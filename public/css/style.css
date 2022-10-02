@@ -176,7 +176,7 @@ a {
     color: #00011C; }
 
 .divider__img {
-  width: 100vw;
+  width: 110vw;
   transform: translateY(1px); }
 
 @media only screen and (max-width: 1000px) {
