@@ -1,0 +1,10 @@
+#lottie-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: $color-primary-dark;
+    animation: linear 1s lottie forwards;
+    animation-delay: 1.8s;
+}

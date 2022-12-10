@@ -6,8 +6,17 @@ let nav = document.querySelector('.nav')
 let navToggle = document.querySelector('.nav__toggle')
 let liquidContainer = document.querySelector('.liquid-blobs');
 let windowWidth = window.innerWidth;
+let windowHeight = window.innerHeight;
 let cursorPoint = document.querySelector('.cursor__point');
 let cursorRing = document.querySelector('.cursor__ring');
+let lottieContainer = document.getElementById("lottie-container");
+
+// Lottie Animation
+lottieContainer.style.width = windowWidth > windowHeight ? `${windowWidth}px` : `${windowWidth * 2}px`;
+
+window.addEventListener('load', () => {
+    setTimeout(() => { lottieContainer.remove(); }, 3000);
+})
 
 // CURSOR LOGIC
 let xPos = 0;

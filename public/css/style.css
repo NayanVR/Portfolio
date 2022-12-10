@@ -2,10 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk");
 @import url("https://fonts.googleapis.com/css2?family=Karantina");
 @keyframes arrow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0; }
   50% {
     opacity: 1; } }
+
+@keyframes lottie {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 *,
 *::after,
@@ -102,6 +109,16 @@ a {
   filter: blur(10px);
   transform: translate(-10%, -0.5rem); }
 
+#lottie-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #00011C;
+  animation: linear 1s lottie forwards;
+  animation-delay: 1.8s; }
+
 .hscroll-container {
   display: flex;
   flex-direction: row;
@@ -132,6 +149,8 @@ a {
 .hscroll-block h2 {
   position: absolute;
   color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
   margin: 0;
   top: 50%;
   left: 50%;
@@ -144,10 +163,7 @@ a {
   opacity: 1; }
 
 .hscroll-block:hover img {
-  filter: saturate(0.5) brightness(0.3); }
-
-.hscroll-block:nth-child(even) {
-  background-color: thistle; }
+  filter: saturate(0.4) brightness(0.2); }
 
 #about {
   width: 100vw;
@@ -507,18 +523,28 @@ nav {
   .work > img {
     width: 35vw; }
 
-.carousel-container:not(:first-child) {
-  margin-top: 5rem; }
-
-.carousel-container > h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: "Space Grotesk", sans-serif;
-  color: #FAE400;
-  text-shadow: 1px 1px 3px black;
-  position: absolute;
-  margin-top: 2rem;
-  z-index: 100; }
+.carousel-container {
+  position: relative; }
+  .carousel-container:not(:first-child) {
+    margin-top: 5rem; }
+  .carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, #00011c 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, #00011c 100%); }
+  .carousel-container > h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Space Grotesk", sans-serif;
+    color: #FAE400;
+    text-shadow: 1px 1px 3px black;
+    position: absolute;
+    margin-top: 2rem;
+    z-index: 100; }
 
 @media only screen and (max-width: 600px) {
   .work > img {

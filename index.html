@@ -7,12 +7,25 @@
 
     <link rel="icon" type="image/x-icon" href="assets/Logo.svg" />
 
+    <!-- Lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <link type="text/css" href="css/style.css" rel="stylesheet" />
 
     <!--!REMOVE : This is only for development -->
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
   </head>
   <body>
+    <!-- LOTTIE ANIMATION -->
+    <div id="lottie-container">
+      <lottie-player
+        src="assets/eyeanim.json"
+        background="transparent"
+        speed="1"
+        autoplay
+      ></lottie-player>
+    </div>
+
     <!-- CURSOR -->
     <div class="cursor cursor__point"></div>
     <div class="cursor cursor__ring"></div>
