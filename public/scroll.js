@@ -5,14 +5,14 @@ export default class HScroll {
         this.data = data;
         this.init();
     }
-    
+
     init() {
         this.currentPixel = Math.abs(this.container.scrollLeft);
         this.attachBlocks();
         this.container.addEventListener("wheel", (e) => {
             this.container.scrollLeft += e.deltaY * 5;
         });
-        
+
         this.looper();
     }
     attachBlocks() {
@@ -20,21 +20,21 @@ export default class HScroll {
             let block = document.createElement('div');
             block.classList.add('hscroll-block');
             block.innerHTML = `
-            <a href="http://${item.link}">
+            <a target="_blank" href="http://${item.link}">
             <h2>${item.name}</h2>
             <img src="${item.imgurl}" alt="${item.name}">
             </a>
             `;
             this.container.appendChild(block);
-        } );
+        });
     }
     looper() {
         let newPixel = Math.abs(this.container.scrollLeft);
         let diff = newPixel - this.currentPixel;
-        let newValue = Math.min(diff * 1.5,80);
+        let newValue = Math.min(diff * 1.5, 80);
         this.container.querySelectorAll('.hscroll-block').forEach((block) => {
-            block.style.transform = `skewX(${ -newValue }deg)`;
-        } );
+            block.style.transform = `skewX(${-newValue}deg)`;
+        });
         this.currentPixel = newPixel;
         requestAnimationFrame(this.looper.bind(this));
     }
